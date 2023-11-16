@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Basket{% endblock %}
+
+
+{% block content %}
+
+{% if empty %}
+    <p>Your shopping basket is empty</p>
+{% else %}
+    <table>
+        <tbody>
+            {% for item in sbi %}
+            <tr>
+                <td>{{item.product_id.name}} - {{item.product_id.description }}</td>
+                <td><img src="{{item.product_id.image.url}}" /> </td>
+                <td>{{item.quantity}}</td>
+                <td>{{ item.item_price }}</td>
+                <td><a href="/removeitem/{{item.id}}">Remove</a> </td>
+            </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href = "/order/" class="btn btn-primary">Order</a>
+
+{% endif %}
+
+
+{% endblock %}

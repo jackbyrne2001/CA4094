@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+{%for p in products%}
+<li>
+    {{p.name}} - ${{p.price}} - {{p.description}}
+
+    <img src="{{p.product_image.url}}" width="150" height="150">
+
+</li>
+
+<a href="/products/{{p.id}}/">View</a>
+
+{%endfor%}
+{%endblock%}

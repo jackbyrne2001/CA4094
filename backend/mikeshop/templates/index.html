@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Hello World{% endblock %}
+
+
+{% block content %}
+	Welcome to my shop for match attax
+
+{%for p in products%}
+<li>
+    {{p}}
+</li>
+
+{%endfor%}
+
+{% if user.is_authenticated %}
+        <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+        <a href = "/logout/" class="btn btn-primary">Logout</a>
+		<a href = "/products/" class="btn btn-primary">Products</a>
+		<a href = "/orderhistory/" class="btn btn-primary">Order History</a>
+	{%else%}
+	<a href = "/login/" class="btn btn-primary">Login</a>
+	<a href = "/register/" class="btn btn-primary">Register</a>
+{%endif%}
+
+{% endblock %}
